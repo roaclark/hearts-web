@@ -1,9 +1,10 @@
-const path = require('path');
+const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 const paths = {
   CLIENT_DIST: path.resolve(__dirname, 'client/dist'),
   CLIENT: path.resolve(__dirname, 'client/src'),
-};
+}
 
 module.exports = {
   entry: path.join(paths.CLIENT, 'app.js'),
@@ -11,4 +12,21 @@ module.exports = {
     path: paths.CLIENT_DIST,
     filename: 'app.bundle.js'
   },
-};
+  plugins: [
+    new HtmlWebpackPlugin(),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: [
+          'babel-loader',
+        ],
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
+}
