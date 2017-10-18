@@ -13,7 +13,9 @@ module.exports = {
     filename: 'app.bundle.js'
   },
   plugins: [
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: path.join(paths.CLIENT, 'index.html'),
+    }),
   ],
   module: {
     rules: [
