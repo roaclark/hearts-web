@@ -2,6 +2,7 @@
   "name": "hearts",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
+    "start": "node app.js",
     "start:client": "webpack-dev-server",
     "start:server": "node app.js"
   },
