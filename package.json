@@ -9,7 +9,8 @@
     "db:init": "cd db && db-migrate db:create hearts --env=dev-init",
     "db:drop": "cd db && db-migrate db:drop hearts --env=dev-init",
     "db:up": "cd db && db-migrate up",
-    "db:reset": "cd db && db-migrate reset"
+    "db:reset": "cd db && db-migrate reset",
+    "db:up:production": "DATABASE_URL=$(heroku config:get DATABASE_URL -a rosalia-hearts)?ssl=true ./node_modules/db-migrate/bin/db-migrate up -m ./db/migrations"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
