@@ -5,6 +5,8 @@ import { render } from 'react-dom'
 
 import styles from './styles.css'
 
+import io from 'socket.io-client'
+
 export default class App extends Component {
   constructor(props) {
     super(props)
@@ -12,9 +14,11 @@ export default class App extends Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('api')
+    const response = await fetch('/api')
     const message = await response.text()
     this.setState({ text: message })
+
+    io('/events')
   }
 
   render() {
