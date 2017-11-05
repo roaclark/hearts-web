@@ -18,7 +18,7 @@ export default class App extends Component {
     const message = await response.text()
     this.setState({ text: message })
 
-    io('/events')
+    io({ path: '/api/events' })
   }
 
   render() {

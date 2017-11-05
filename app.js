@@ -1,6 +1,6 @@
 const express = require('express')
 const path = require('path')
-const socket = require('socket.io')
+const socketio = require('socket.io')
 
 const app = express()
 const port = process.env.PORT || 3000
@@ -14,9 +14,9 @@ app.get('/api', (req, res) => {
 const server = app.listen(port, () => {
   console.log('Example app listening!')
 })
-const io = socket.listen(server)
+const io = socketio(server, { path: '/api/events' })
 
-io.path('/events').on('connection', socket => {
+io.on('connection', socket => {
   console.log('a user connected')
   socket.on('disconnect', () => {
     console.log('a user disconnected')
